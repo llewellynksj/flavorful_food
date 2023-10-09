@@ -9,7 +9,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Special+Elite&display=swap');
         body {
             background-image: url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/099/649/original/foodbackground.jpg?1696857688');
-            font-family: Merriweather, sans-serif;
+            font-family: "Special Elite", sans-serif;
         }
         .container {
             margin: auto;
@@ -24,9 +24,13 @@
             position: relative;
         }
         h1, button, h2, h3, h4 {
-            font-family: "Special Elite", sans-serif;
             text-align: center;
             color: #9265B8;
+        }
+        p {
+            text-align: center;
+            line-height: 25px;
+            font-size: 18px;
         }
         .img-border {
             background: #fff;
@@ -60,16 +64,24 @@
 
         }
         button {
+            border: 1px solid #D0E2BF;
             border-radius: 18px;
             padding: 8px;
-            min-width: 115px;
+            min-width: 175px;
             margin: 10px;
+            background-color: #D0E2BF;
+            font-size: 16px;
         }
-        #ingredients-modal, #recipe-modal {
+        button:hover {
+            background-color: #9265B8;
+            border: 1px solid #9265B8;
+            color: #D0E2BF;
+        }
+
+        #ingredients-modal, #recipe-modal, #sauce-recipe-modal {
             display: none;
         }
         .modal-container {
-            /* display: none; */
             position: fixed;
             left: 0;
             top: 0;
@@ -85,13 +97,13 @@
             background-color: #fff;
             margin: auto;
             padding: 15px;
-            border-radius: 10px;
-            position: fixed;
-            top: 1%;
+            border-radius: 18px;
+            position: absolute;
+            top: 10px;
+            overflow-y: auto;
+            max-height: calc(100vh - 50px);
             left: 50%;
             transform: translate(-50%, 0);
-            min-width: 225px;
-            height: auto;
         }
         .modal-button {
             color: #252525;
@@ -105,6 +117,56 @@
             color: #252525;
             text-decoration: none;
             cursor: pointer;
+        }
+        .text-container {
+            margin: auto;
+            max-width: 530px;
+        }
+        .divider {
+            margin: 80px auto;
+            width: 400px; 
+            max-width: 100%;
+            position: relative;
+        }
+        
+        .divider-inner { 
+            overflow: hidden; 
+            height: 20px; 
+        }
+        
+        .divider-inner:after { 
+            content: ''; 
+            display: block; 
+            margin: -25px auto 0;
+            width: 100%; 
+            height: 25px;  
+            border-radius: 10px;
+            box-shadow: 0 0 10px #D0E2BF;
+        }
+        .divider span {
+            width: 50px; 
+            height: 50px; 
+            position: absolute; 
+            bottom: 100%; 
+            margin-bottom: -25px;
+            left: 50%; 
+            margin-left: -25px;
+            border-radius: 100%;
+            box-shadow: 0 2px 4px #D0E2BF;
+            background: #fff;
+        }
+        .divider i {
+            position: absolute;
+            top: 4px; 
+            bottom: 4px;
+            left: 4px; 
+            right: 4px;
+            border-radius: 100%;
+            border: 1px dashed #D0E2BF;
+            text-align: center;
+            line-height: 40px;
+            color: #D0E2BF;
+            font-size: 30px;
         }
         
     </style>
@@ -120,7 +182,22 @@
 
         <div class="btn-container">
             <button onclick="displayIngredientsModal()">Ingredients</button>
-            <button onclick="displayRecipeModal()">Method</button>
+            <button onclick="displaySauceRecipeModal()">Sauce Recipe</button>
+            <button onclick="displayRecipeModal()">Enchilada Recipe</button>
+        </div>
+
+        <div class="text-container">
+            <h2>A Flavour Explosion!</h2>
+            <p>A perfect mixture of spices, tender meat,<br>
+                brightly coloured veg, and delicious black beans</p>
+            <p>...all wrapped up in a perfect tortilla parcel!</p>
+        </div>
+
+        <div class="divider"><div class="divider-inner"></div><span><i class="fa-duotone fa-pepper-hot"></i></span></div>
+
+        <div class="text-container">
+            <h2>It's all about <em>that</em> sauce!</h2>
+            <p>A harmonious balance of spicy, smoky, sweet, and savory notes; the sauce, made from a carefully crafted blend of ingredients, is the star of the show, coating every bite with its complex, deeply satisfying taste. The cheese adds richness, and the meat, whether it's succulent chicken, tender beef, or flavorful pork, provides a hearty and satisfying element.</p>
         </div>
 
         <div class="sauce-img img-border">
@@ -150,6 +227,7 @@
                 <h3>Enchiladas:</h3>
                 <ul>
                     <li>6-8 flour/corn tortillas</li>
+                    <li>Enchilada Sauce</li>
                     <li>2 x green peppers, sliced</li>
                     <li>2 x red peppers, sliced</li>
                     <li>1 x large white onion, sliced</li>
@@ -164,7 +242,7 @@
             </div>
         </div>
 
-        <div tabindex="0" class="modal-container" id="recipe-modal">
+        <div tabindex="0" class="modal-container" id="sauce-recipe-modal">
             <div class="modal-content">
                 <h2>Recipe</h2>
                 <h3>To make the sauce:</h3>
@@ -176,7 +254,14 @@
                     <li>Add the blended sauce to the skillet and simmer gently for 10-15 mins. You can do this 10 mins before you're ready to construct the enchiladas.</li>
                 </ol>
                 <p><em>Try the sauce and add more chilli to taste</em></p>
-                <h3>To make the Enchiladas</h3>
+                <button class="modal-button">Close</button>
+            </div>
+        </div>
+
+        <div tabindex="0" class="modal-container" id="recipe-modal">
+            <div class="modal-content">
+                <h2>Recipe</h2>
+                <h3>Make the Enchilada mixture:</h3>
                 <ol>
                     <li>Pre-heat the oven to 190° (Fan oven)</li>
                     <li>Heat oil in two separate pans over a medium heat. In one pan start to cook the onions and peppers off. In the other pan start to brown the chicken (you may need to do this in batches).</li>
@@ -184,7 +269,7 @@
                     <li>Add a pinch of paprika and the diced chilli to the onions and peppers after around 6-8 mins of cooking.</li>
                     <li>Heat your black beans on the hob or in the microwave, drain.</li>
                 </ol>
-                <h3>To Assemble:</h3>
+                <h3>Assemble:</h3>
                 <ol>
                     <li>Put a spoonful of sauce on the base of a tortilla and spread across it.</li>
                     <li>Put a spoon of black beans in a line down the middle of the tortilla.</li>
@@ -202,11 +287,12 @@
         </div>
     </div>
     
-
+    <script src="https://kit.fontawesome.com/b59d6ce89e.js" crossorigin="anonymous"></script>
     <script>
         // Modal Variables
         const ingredientsModal = document.getElementById("ingredients-modal");
         const recipeModal = document.getElementById("recipe-modal");
+        const sauceRecipeModal = document.getElementById("sauce-recipe-modal");
         const closeButton = document.getElementsByClassName("modal-button")[0];
 
         // Model Functions
@@ -215,6 +301,13 @@
             ingredientsModal.focus();
             closeButton.addEventListener("click", closeModal);
             ingredientsModal.addEventListener("click", closeModal);
+        }
+
+        function displaySauceRecipeModal() {
+            sauceRecipeModal.style.display = "block";
+            sauceRecipeModal.focus();
+            closeButton.addEventListener("click", closeModal);
+            sauceRecipeModal.addEventListener("click", closeModal);
         }
 
         function displayRecipeModal() {
@@ -227,6 +320,7 @@
         function closeModal() {
             ingredientsModal.style.display = "none";
             recipeModal.style.display = "none";
+            sauceRecipeModal.style.display = "none";
         }
 
     </script>
