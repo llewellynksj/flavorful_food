@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Enchiladas</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Special+Elite&display=swap');
+        body {
+            background-image: url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/099/649/original/foodbackground.jpg?1696857688');
+            font-family: Merriweather, sans-serif;
+        }
+        .container {
+            margin: auto;
+            padding: 10px;
+            margin-top: 80px;
+            width: 800px;
+            height: 800px;
+            border-radius: 32px;
+            background: #ffffff;
+            box-shadow:  -20px 20px 40px #9e9e9e,
+             20px -20px 40px #ffffff;
+            position: relative;
+        }
+        h1, button, h2, h3, h4 {
+            font-family: "Special Elite", sans-serif;
+            text-align: center;
+            color: #9265B8;
+        }
+        .img-border {
+            background: #fff;
+            padding: 1rem;
+            box-shadow: 0 0.2rem 1.2rem rgba(0,0,0,0.2);
+            padding-bottom: 80px;
+        }
+        .enchiladas-img {
+            margin: 10px;
+            position: absolute;
+            left: -300px;
+            transform: rotate(-8deg);
+        }
+        .enchiladas-img img {
+            width: 400px;
+            height: auto;
+        }
+        .sauce-img {
+            position: absolute;
+            right: -200px;
+            bottom: -60px;
+            transform: rotate(5deg);
+        }
+        .sauce-img img {
+            width: 300px;
+            height: auto;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+
+        }
+        button {
+            border-radius: 18px;
+            padding: 8px;
+            min-width: 115px;
+            margin: 10px;
+        }
+        #ingredients-modal, #recipe-modal {
+            display: none;
+        }
+        .modal-container {
+            /* display: none; */
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-container div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            margin: auto;
+            padding: 15px;
+            border-radius: 10px;
+            position: fixed;
+            top: 1%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            min-width: 225px;
+            height: auto;
+        }
+        .modal-button {
+            color: #252525;
+            font-size: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            padding: 5px;
+            background-color:#9265B8;
+        }
+        .modal-button:hover, .modal-button:focus {
+            color: #252525;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Chicken & Black Bean Enchiladas</h1>
+        
+        <div class="enchiladas-img img-border">
+            <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/099/648/original/aleksandra-gencheva-4vB9GNWnmbM-unsplash.jpg?1696857382" alt="">
+        </div>
+
+        <div class="btn-container">
+            <button onclick="displayIngredientsModal()">Ingredients</button>
+            <button onclick="displayRecipeModal()">Method</button>
+        </div>
+
+        <div class="sauce-img img-border">
+            <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/099/651/original/anshu-a-mVUs_adTiX8-unsplash.jpg?1696859147" alt="">
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div>
+        <div tabindex="0" class="modal-container" id="ingredients-modal">
+            <div class="modal-content">
+                <h2>Ingredients</h2>
+                <p><em>Serves 4</em></p>
+                <h3>Sauce:</h3>
+                <ul>
+                    <li>2 x 400g tinned tomatoes</li>
+                    <li>1 x white onion, diced</li>
+                    <li>3 x garlic cloves, minced</li>
+                    <li>2 x tbsp chilli powder</li>
+                    <li>2 x tsp cumin</li>
+                    <li>2 x tbsp oregano</li>
+                    <li>2 x tbsp lime or lemon juice</li>
+                    <li>1 x tsp fresh rosemary, chopped (optional)</li>
+                    <li>1 x pinch onion powder (optional)</li>
+                    <li>1 x pinch paprika (optional)</li>
+                </ul>
+                <h3>Enchiladas:</h3>
+                <ul>
+                    <li>6-8 flour/corn tortillas</li>
+                    <li>2 x green peppers, sliced</li>
+                    <li>2 x red peppers, sliced</li>
+                    <li>1 x large white onion, sliced</li>
+                    <li>600g (approx) chicken breast, diced thinly</li>
+                    <li>1 x green chilli, finely diced</li>
+                    <li>1 x tsp paprika</li>
+                    <li>1 x 400g can of black beans</li>
+                    <li>250g grated cheese</li>
+                    <li>Fresh coriander to garnish</li>
+                </ul>
+                <button class="modal-button">Close</button>
+            </div>
+        </div>
+
+        <div tabindex="0" class="modal-container" id="recipe-modal">
+            <div class="modal-content">
+                <h2>Recipe</h2>
+                <h3>To make the sauce:</h3>
+                <ol>
+                    <li>Heat olive oil in a large skillet over a medium heat. Add the onion and brown off (approx. 6-8 mins). Add the minced garlic and cook for a further minute.</li>
+                    <li>While the onion is cooking add all the other sauce ingredients to a blender (you may need to do this in 2 batches).</li>
+                    <li>Once cooked, add the onion and garlic mix to the blender, and blend until smooth.</li>
+                    <li>Wipe down the skillet getting rid of any leftover pieces of onion.</li>
+                    <li>Add the blended sauce to the skillet and simmer gently for 10-15 mins. You can do this 10 mins before you're ready to construct the enchiladas.</li>
+                </ol>
+                <p><em>Try the sauce and add more chilli to taste</em></p>
+                <h3>To make the Enchiladas</h3>
+                <ol>
+                    <li>Pre-heat the oven to 190° (Fan oven)</li>
+                    <li>Heat oil in two separate pans over a medium heat. In one pan start to cook the onions and peppers off. In the other pan start to brown the chicken (you may need to do this in batches).</li>
+                    <li>Once the chicken is cooked through add to the onion/pepper mix.</li>
+                    <li>Add a pinch of paprika and the diced chilli to the onions and peppers after around 6-8 mins of cooking.</li>
+                    <li>Heat your black beans on the hob or in the microwave, drain.</li>
+                </ol>
+                <h3>To Assemble:</h3>
+                <ol>
+                    <li>Put a spoonful of sauce on the base of a tortilla and spread across it.</li>
+                    <li>Put a spoon of black beans in a line down the middle of the tortilla.</li>
+                    <li>Spread the chicken/onion/pepper mixture in a line down the middle of the tortilla.</li>
+                    <li>Sprinkle grated cheese on top.</li>
+                    <li>Roll the tortilla, folding in the ends.</li>
+                    <li>Place in an oven proof roasting dish.</li>
+                    <li>Repeat until all the mixture/tortillas are used up.</li>
+                    <li>Pour the remaining sauce over the enchiladas and sprinkle the remaining cheese over the top.</li>
+                    <li>Bake in the oven for 20-30 mins or until cheese is melted and golden.</li>
+                    <li>Garnish with the coriander before serving.</li>
+                </ol>
+                <button class="modal-button">Close</button>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        // Modal Variables
+        const ingredientsModal = document.getElementById("ingredients-modal");
+        const recipeModal = document.getElementById("recipe-modal");
+        const closeButton = document.getElementsByClassName("modal-button")[0];
+
+        // Model Functions
+        function displayIngredientsModal() {
+            ingredientsModal.style.display = "block";
+            ingredientsModal.focus();
+            closeButton.addEventListener("click", closeModal);
+            ingredientsModal.addEventListener("click", closeModal);
+        }
+
+        function displayRecipeModal() {
+            recipeModal.style.display = "block";
+            recipeModal.focus();
+            closeButton.addEventListener("click", closeModal);
+            recipeModal.addEventListener("click", closeModal);
+        }
+
+        function closeModal() {
+            ingredientsModal.style.display = "none";
+            recipeModal.style.display = "none";
+        }
+
+    </script>
+
+</body>
+</html>
