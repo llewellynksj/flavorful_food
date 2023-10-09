@@ -131,12 +131,10 @@
             max-width: 100%;
             position: relative;
         }
-        
         .divider-inner { 
             overflow: hidden; 
             height: 20px; 
         }
-        
         .divider-inner:after { 
             content: ''; 
             display: block; 
@@ -171,12 +169,58 @@
             color: #D0E2BF;
             font-size: 30px;
         }
-        footer {
-            margin-top: 30px;
+        .footer-container {
+            margin: auto;
+            padding-top: 20px;
         }
-        .footer * {
-            line-height: 10px;
+        .footer p {
             font-size: 12px;
+            line-height: 10px;
+        }
+        @media only screen and (max-width: 480px) {
+            .container {
+                max-width: 340px;
+                height: auto;
+            }
+            .btn-container {
+                flex-direction: column;
+            }
+            .enchiladas-img {
+                display: none;
+            }
+            .sauce-img {
+                display: none;
+            }
+        }
+        @media only screen and (max-width: 990px) {
+            .conatiner {
+                width: 400px;
+                margin: auto;   
+            }
+            .enchiladas-img img {
+                width: 300px;
+            }
+            .enchiladas-img {
+                left: 50px;
+                bottom: -300px;
+                transform: rotate(0deg)
+            }
+            .sauce-img img {
+                width: 200px;
+            }
+            .sauce-img {
+                right: 50px;
+                bottom: -350px;
+                transform: rotate(0deg)
+            }
+        }
+        @media only screen and (max-width: 1350px) {
+            .enchiladas-img img {
+                width: 300px;
+            }
+            .enchiladas-img {
+                left: -250px;
+            }
         }
     </style>
 </head>
@@ -217,6 +261,16 @@
 
         <div class="sauce-img img-border">
             <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/099/651/original/anshu-a-mVUs_adTiX8-unsplash.jpg?1696859147" alt="Photo of jars of tomato sauce next to fresh tomatoes">
+        </div>
+    </div>
+
+    <div class="footer-container">
+        <div class="footer">
+            <p>Credits:</p>
+            <p>Tomato sauce photo by <a href="https://unsplash.com/@anshu18?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Anshu A</a> on <a href="https://unsplash.com/photos/mVUs_adTiX8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+            </p>
+            <p>Enchilada photo by <a href="https://unsplash.com/@easteuropeaneats?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Aleksandra Gencheva</a> on <a href="https://unsplash.com/photos/4vB9GNWnmbM?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+            </p>
         </div>
     </div>
 
@@ -301,16 +355,6 @@
             </div>
         </div>
     </div>
-
-    <footer>
-        <div class="footer">
-            <p>Credits:</p>
-            <p>Tomato sauce photo by <a href="https://unsplash.com/@anshu18?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Anshu A</a> on <a href="https://unsplash.com/photos/mVUs_adTiX8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-            </p>
-            <p>Enchilada photo by <a href="https://unsplash.com/@easteuropeaneats?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Aleksandra Gencheva</a> on <a href="https://unsplash.com/photos/4vB9GNWnmbM?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-            </p>
-        </div>
-    </footer>
     
     <script src="https://kit.fontawesome.com/b59d6ce89e.js" crossorigin="anonymous"></script>
     <script>
