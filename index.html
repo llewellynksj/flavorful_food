@@ -191,6 +191,15 @@
             .sauce-img {
                 display: none;
             }
+            .modal-content-ingredients {
+                padding-top: 300px;
+            }
+            .modal-content-sauce {
+                padding-top: 300px;
+            }
+            .modal-content-recipe {
+                padding-top: 410px;
+            }
         }
         @media only screen and (max-width: 990px) {
             .conatiner {
@@ -201,8 +210,6 @@
                 width: 300px;
             }
             .enchiladas-img {
-                left: 50px;
-                bottom: -300px;
                 transform: rotate(0deg)
             }
             .sauce-img img {
@@ -212,6 +219,9 @@
                 right: 50px;
                 bottom: -350px;
                 transform: rotate(0deg)
+            }
+            .footer-container {
+                display: none;
             }
         }
         @media only screen and (max-width: 1350px) {
@@ -277,7 +287,7 @@
     <!-- Modals -->
     <div>
         <div tabindex="0" class="modal-container" id="ingredients-modal">
-            <div class="modal-content">
+            <div class="modal-content-ingredients">
                 <h2>Ingredients</h2>
                 <p><em>Serves 4</em></p>
                 <h3>Sauce:</h3>
@@ -312,7 +322,7 @@
         </div>
 
         <div tabindex="0" class="modal-container" id="sauce-recipe-modal">
-            <div class="modal-content">
+            <div class="modal-content-sauce">
                 <h2>Recipe</h2>
                 <h3>To make the sauce:</h3>
                 <ol>
@@ -328,7 +338,7 @@
         </div>
 
         <div tabindex="0" class="modal-container" id="recipe-modal">
-            <div class="modal-content">
+            <div class="modal-content-recipe">
                 <h2>Recipe</h2>
                 <h3>Make the Enchilada mixture:</h3>
                 <ol>
